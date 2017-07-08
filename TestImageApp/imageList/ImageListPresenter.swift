@@ -7,14 +7,16 @@
 //
 import UIKit
 final class ImageListPresenter {
+  private var allImageInfos = [ImageInfo]()
   private(set) var imageInfos = [ImageInfo]()
-  
+
   struct CONST {
     static let JSON_URL = "http://www.xiag.ch/share/testtask/list.json"
   }
   
   func loadImageTn(for index: Int) throws -> (String, UIImage) {
     assert(index < imageInfos.count)
+    let name = imageInfos[index].name
     guard let url = URL(string: imageInfos[index].urlTn) else {
       throw ImageLoadError.incorrectURL
     }
@@ -22,7 +24,7 @@ final class ImageListPresenter {
     guard let image = UIImage(data: data) else {
       throw ImageLoadError.noImage
     }
-    return (imageInfos[index].name, image)
+    return (name, image)
   }
   
   func loadImageInfo() throws {
@@ -33,8 +35,17 @@ final class ImageListPresenter {
     guard let json = try JSONSerialization.jsonObject(with: data) as? [[String: String]] else {
       throw ImageLoadError.incorrectJSONData
     }
-    imageInfos = try json.map { try ImageInfo(dict: $0) }
+    allImageInfos = try json.map { try ImageInfo(dict: $0) }
+    imageInfos = allImageInfos
     //print(imageInfos)
+  }
+  
+  func filterForSearch(text: String) {
+    if text != "" {
+      imageInfos = allImageInfos.filter { $0.name.lowercased().contains(text.lowercased()) }
+    } else {
+      imageInfos = allImageInfos
+    }
   }
   
 }

@@ -14,8 +14,9 @@ class ImageListController: UITableViewController {
     static let IMAGE_LIST_CELL = "image list cell"
   }
 
-  private let presenter = ImageListPresenter()
+  fileprivate let presenter = ImageListPresenter()
 
+  private let searchController = UISearchController(searchResultsController: nil)
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
@@ -27,6 +28,11 @@ class ImageListController: UITableViewController {
     refreshControl?.addTarget(self, action: #selector(start), for: .valueChanged)
     //self.splitViewController?.delegate = self
     title = "Image list"
+    searchController.searchResultsUpdater = self
+    tableView.tableHeaderView = searchController.searchBar
+    searchController.dimsBackgroundDuringPresentation = false
+    definesPresentationContext = true
+
   }
 
   @objc private func start() {
@@ -78,7 +84,7 @@ class ImageListController: UITableViewController {
     return nil
   }
 
-  
+    
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
@@ -97,9 +103,10 @@ class ImageListController: UITableViewController {
 
 }
 
-/*extension ImageListController: UISplitViewControllerDelegate {
-  func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-    return true
+extension ImageListController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    presenter.filterForSearch(text: searchController.searchBar.text!)
+    tableView.reloadData()
   }
+  
 }
-*/

@@ -65,7 +65,7 @@
                                 <connections>
                                     <outlet property="myImageView" destination="2LW-dd-dKj" id="bDa-S4-Eg3"/>
                                     <outlet property="nameLbl" destination="ERF-ly-YcC" id="Fgk-U3-BPQ"/>
-                                    <segue destination="v5K-Ol-fAI" kind="showDetail" identifier="to preview image" action="showViewController:sender:" id="5Al-vQ-4VB"/>
+                                    <segue destination="v5K-Ol-fAI" kind="showDetail" id="p4X-RT-Y1F"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -82,7 +82,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfo-61-iSI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2305" y="-489"/>
+            <point key="canvasLocation" x="2198" y="-402"/>
         </scene>
         <!--Preview Image Controller-->
         <scene sceneID="AKx-hs-R9u">
@@ -105,13 +105,20 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iM1-gJ-HOk">
                                 <rect key="frame" x="178" y="324" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nh-hS-oJx">
+                                <rect key="frame" x="139.5" y="629" width="97" height="30"/>
+                                <state key="normal" title="Send on email"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="jCm-Rc-tuv" secondAttribute="leading" id="4ep-yi-qfx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jCm-Rc-tuv" secondAttribute="trailing" id="RBd-14-eWj"/>
                             <constraint firstItem="jCm-Rc-tuv" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="bOv-Ui-0OQ"/>
+                            <constraint firstItem="FKb-jA-WcL" firstAttribute="top" secondItem="6nh-hS-oJx" secondAttribute="bottom" constant="8" symbolic="YES" id="oaF-Mk-9xB"/>
                             <constraint firstItem="iM1-gJ-HOk" firstAttribute="centerX" secondItem="Yeg-Hm-MsG" secondAttribute="centerX" id="plA-GC-GB8"/>
+                            <constraint firstItem="6nh-hS-oJx" firstAttribute="centerX" secondItem="Yeg-Hm-MsG" secondAttribute="centerX" id="rJL-TA-WUe"/>
+                            <constraint firstItem="6nh-hS-oJx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jCm-Rc-tuv" secondAttribute="bottom" constant="8" symbolic="YES" id="zIL-rn-cgO"/>
                             <constraint firstItem="iM1-gJ-HOk" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="zx8-Tf-juB"/>
                         </constraints>
                     </view>
@@ -163,6 +170,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fv9-8S-zGV"/>
+        <segue reference="p4X-RT-Y1F"/>
     </inferredMetricsTieBreakers>
 </document>
