@@ -20,13 +20,14 @@ class PreviewImageController: UIViewController {
   }
   
   private func setupUI() {
-    self.title = presenter.imageInfo.name
     activityIndicator.startAnimating()
 
   }
   
   func setup(with info: ImageInfo) {
     presenter.imageInfo = info
+    self.title = presenter.imageInfo?.name
+
   }
   
   private func start() {

@@ -25,7 +25,7 @@ class ImageListController: UITableViewController {
   private func setupUI() {
     tableView.rowHeight = 76
     refreshControl?.addTarget(self, action: #selector(start), for: .valueChanged)
-    
+    //self.splitViewController?.delegate = self
     title = "Image list"
   }
 
@@ -81,7 +81,12 @@ class ImageListController: UITableViewController {
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let pic = segue.destination as? PreviewImageController, segue.identifier == "to preview image" else {
+    
+    guard let nav = segue.destination as? UINavigationController else {
+      return
+    }
+    
+    guard let pic = nav.visibleViewController as? PreviewImageController else {
       return
     }
     guard let selectedIndex = self.tableView.indexPath(for: sender as! ImageListItemCell) else {
@@ -91,3 +96,10 @@ class ImageListController: UITableViewController {
   }
 
 }
+
+/*extension ImageListController: UISplitViewControllerDelegate {
+  func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+    return true
+  }
+}
+*/

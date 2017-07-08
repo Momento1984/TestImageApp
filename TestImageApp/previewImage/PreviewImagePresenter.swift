@@ -9,10 +9,13 @@
 import UIKit
 
 final class PreviewImagePresenter {
-  var imageInfo: ImageInfo!
+  var imageInfo: ImageInfo?
 
   
-  func loadImage() throws -> UIImage {
+  func loadImage() throws -> UIImage? {
+    guard let imageInfo = imageInfo else {
+      return nil
+    }
     guard let url = URL(string: imageInfo.url) else {
       throw ImageLoadError.incorrectURL
     }

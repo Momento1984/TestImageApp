@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pkr-RU-jxv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uyS-jr-d6y">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Split View Controller-->
+        <scene sceneID="NBv-cR-2aQ">
+            <objects>
+                <splitViewController id="uyS-jr-d6y" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Pkr-RU-jxv" kind="relationship" relationship="masterViewController" id="WXE-eR-lUH"/>
+                        <segue destination="v5K-Ol-fAI" kind="relationship" relationship="detailViewController" id="fv9-8S-zGV"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MUD-6t-PRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-84" y="24"/>
+        </scene>
         <!--Image List Controller-->
         <scene sceneID="j6c-RU-hJL">
             <objects>
@@ -52,7 +65,7 @@
                                 <connections>
                                     <outlet property="myImageView" destination="2LW-dd-dKj" id="bDa-S4-Eg3"/>
                                     <outlet property="nameLbl" destination="ERF-ly-YcC" id="Fgk-U3-BPQ"/>
-                                    <segue destination="UuH-RR-3uS" kind="show" identifier="to preview image" id="5Al-vQ-4VB"/>
+                                    <segue destination="v5K-Ol-fAI" kind="showDetail" identifier="to preview image" action="showViewController:sender:" id="5Al-vQ-4VB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,12 +76,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="mOq-SF-zBU"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="suP-UV-Uby">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfo-61-iSI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.8" y="113.79310344827587"/>
+            <point key="canvasLocation" x="2305" y="-489"/>
         </scene>
         <!--Preview Image Controller-->
         <scene sceneID="AKx-hs-R9u">
@@ -101,6 +115,7 @@
                             <constraint firstItem="iM1-gJ-HOk" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="zx8-Tf-juB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Zvf-Al-fyg"/>
                     <connections>
                         <outlet property="activityIndicator" destination="iM1-gJ-HOk" id="Erp-q9-7NF"/>
                         <outlet property="previewImageView" destination="jCm-Rc-tuv" id="mfi-Vr-CaV"/>
@@ -108,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTL-kK-lPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.8" y="113.79310344827587"/>
+            <point key="canvasLocation" x="1919" y="378"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cvz-a1-nuq">
@@ -126,7 +141,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyn-0D-GwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="149.59999999999999" y="113.79310344827587"/>
+            <point key="canvasLocation" x="1079" y="-385"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fFv-9e-Ldm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v5K-Ol-fAI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QZC-QC-9qR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UuH-RR-3uS" kind="relationship" relationship="rootViewController" id="lTZ-ON-cUT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xf9-mJ-9o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="379"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fv9-8S-zGV"/>
+    </inferredMetricsTieBreakers>
 </document>
