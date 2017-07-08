@@ -10,11 +10,45 @@ import UIKit
 
 class PreviewImageController: UIViewController {
 
-  @IBOutlet var previewImageView: UIImageView!
+  @IBOutlet private var previewImageView: UIImageView!
+  @IBOutlet var activityIndicator: UIActivityIndicatorView!
+  private var presenter = PreviewImagePresenter()
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupUI()
+    start()
+  }
+  
+  private func setupUI() {
+    self.title = presenter.imageInfo.name
+    activityIndicator.startAnimating()
 
   }
+  
+  func setup(with info: ImageInfo) {
+    presenter.imageInfo = info
+  }
+  
+  private func start() {
+    activityIndicator.startAnimating()
+    
+    DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+      do {
+        let image = try self?.presenter.loadImage()
+        DispatchQueue.main.async {
+          self?.activityIndicator.stopAnimating()
+          self?.previewImageView.image = image
+        }
+      } catch {
+        print(error)
+        DispatchQueue.main.async { [weak self] in
+          self?.activityIndicator.stopAnimating()
+        }
+      }
+    }
+  }
+  
+  
 
     /*
     // MARK: - Navigation

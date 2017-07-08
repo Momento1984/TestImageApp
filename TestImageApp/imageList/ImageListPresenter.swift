@@ -6,7 +6,6 @@
 //  Copyright © 2017 Виталий Антипов. All rights reserved.
 //
 import UIKit
-import Foundation
 final class ImageListPresenter {
   private(set) var imageInfos = [ImageInfo]()
   

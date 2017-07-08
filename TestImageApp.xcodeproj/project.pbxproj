@@ -17,6 +17,7 @@
 		D859DDB31F1089AD008F3FF4 /* ImageLoadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D859DDB21F1089AD008F3FF4 /* ImageLoadError.swift */; };
 		D859DDB51F10A647008F3FF4 /* ImageListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D859DDB41F10A647008F3FF4 /* ImageListItemCell.swift */; };
 		D859DDB81F10AC11008F3FF4 /* PreviewImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D859DDB71F10AC11008F3FF4 /* PreviewImageController.swift */; };
+		D859DDBA1F10B14D008F3FF4 /* PreviewImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D859DDB91F10B14D008F3FF4 /* PreviewImagePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D859DDB21F1089AD008F3FF4 /* ImageLoadError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadError.swift; sourceTree = "<group>"; };
 		D859DDB41F10A647008F3FF4 /* ImageListItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListItemCell.swift; sourceTree = "<group>"; };
 		D859DDB71F10AC11008F3FF4 /* PreviewImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewImageController.swift; sourceTree = "<group>"; };
+		D859DDB91F10B14D008F3FF4 /* PreviewImagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewImagePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				D859DDB71F10AC11008F3FF4 /* PreviewImageController.swift */,
+				D859DDB91F10B14D008F3FF4 /* PreviewImagePresenter.swift */,
 			);
 			path = previewImage;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				D859DDB51F10A647008F3FF4 /* ImageListItemCell.swift in Sources */,
 				D859DD9A1F107B87008F3FF4 /* AppDelegate.swift in Sources */,
 				D859DDB31F1089AD008F3FF4 /* ImageLoadError.swift in Sources */,
+				D859DDBA1F10B14D008F3FF4 /* PreviewImagePresenter.swift in Sources */,
 				D859DDB11F1083B0008F3FF4 /* ImageInfo.swift in Sources */,
 				D859DDAC1F107C28008F3FF4 /* ImageListController.swift in Sources */,
 				D859DDB81F10AC11008F3FF4 /* PreviewImageController.swift in Sources */,

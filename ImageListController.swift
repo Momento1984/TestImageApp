@@ -25,22 +25,23 @@ class ImageListController: UITableViewController {
   private func setupUI() {
     tableView.rowHeight = 76
     refreshControl?.addTarget(self, action: #selector(start), for: .valueChanged)
+    
+    title = "Image list"
   }
 
   @objc private func start() {
     refreshControl?.beginRefreshing()
-    defer {
-      DispatchQueue.main.async { [weak self] in
-        self?.refreshControl?.endRefreshing()
-      }
-    }
     DispatchQueue.global(qos: .userInteractive).async { [weak self] in
       do {
         try self?.presenter.loadImageInfo()
         DispatchQueue.main.async {
           self?.tableView.reloadData()
+          self?.refreshControl?.endRefreshing()
         }
       } catch {
+        DispatchQueue.main.async { [weak self] in
+          self?.refreshControl?.endRefreshing()
+        }
         print(error)
       }
     }
@@ -76,11 +77,17 @@ class ImageListController: UITableViewController {
     }
     return nil
   }
+
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    guard let pic = segue.destination as? PreviewImageController, segue.identifier == "to preview image" else {
+      return
+    }
+    guard let selectedIndex = self.tableView.indexPath(for: sender as! ImageListItemCell) else {
+      return
+    }
+    pic.setup(with: presenter.imageInfos[selectedIndex.row])
   }
 
 }
