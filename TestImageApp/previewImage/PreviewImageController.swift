@@ -12,12 +12,14 @@ import MessageUI
 class PreviewImageController: UIViewController {
 
   @IBOutlet private var previewImageView: UIImageView!
-  @IBOutlet var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet private var activityIndicator: UIActivityIndicatorView!
   
-  @IBOutlet var selectImageLbl: UILabel!
-  var isSelectedImage = false
+  @IBOutlet private var selectImageLbl: UILabel!
+  private var isSelectedImage = false
   
   private var presenter = PreviewImagePresenter()
+  typealias DidLoadImageCallBack = (String, UIImage)->()
+  private var didLoadImageCallBack: DidLoadImageCallBack!
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
@@ -29,15 +31,14 @@ class PreviewImageController: UIViewController {
   private func setupUI() {
     activityIndicator.stopAnimating()
     selectImageLbl.isHidden = false
-
-    
   }
 
-  func setup(with info: ImageInfo) {
+  func setup(with info: ImageInfo, didLoadImage: @escaping DidLoadImageCallBack) {
     presenter.imageInfo = info
     self.title = presenter.imageInfo?.name
     self.navigationItem.rightBarButtonItems = []
     isSelectedImage = true
+    didLoadImageCallBack = didLoadImage
   }
 
   private func start() {
@@ -52,6 +53,7 @@ class PreviewImageController: UIViewController {
             if let strong = self {
               strong.activityIndicator.stopAnimating()
               strong.previewImageView.image = image
+              strong.didLoadImageCallBack(strong.presenter.imageInfo!.name, image)
               strong.navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "Send", style: .plain, target: strong, action: #selector(strong.shareOnEmail))]
             }
           }

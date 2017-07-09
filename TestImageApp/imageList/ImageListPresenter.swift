@@ -17,6 +17,9 @@ final class ImageListPresenter {
   func loadImageTn(for index: Int) throws -> (String, UIImage) {
     assert(index < imageInfos.count)
     let name = imageInfos[index].name
+    if let image = imageInfos[index].tinyImage {
+      return (name, image)
+    }
     guard let url = URL(string: imageInfos[index].urlTn) else {
       throw ImageLoadError.incorrectURL
     }
@@ -38,6 +41,16 @@ final class ImageListPresenter {
     allImageInfos = try json.map { try ImageInfo(dict: $0) }
     imageInfos = allImageInfos
     //print(imageInfos)
+  }
+  
+  func setImageInfo(name: String, image: UIImage) {
+    if let index = allImageInfos.index(where: {$0.name == name}) {
+      allImageInfos[index].largeImage = image
+    }
+    if let index = imageInfos.index(where: {$0.name == name}) {
+      imageInfos[index].largeImage = image
+    }
+
   }
   
   func filterForSearch(text: String) {

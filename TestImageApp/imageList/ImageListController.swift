@@ -112,7 +112,10 @@ class ImageListController: UITableViewController {
     guard let selectedIndex = self.tableView.indexPath(for: sender as! ImageListItemCell) else {
       return
     }
-    pic.setup(with: presenter.imageInfos[selectedIndex.row])
+    pic.setup(with: presenter.imageInfos[selectedIndex.row]) {
+      [weak self] name, image in
+      self?.presenter.setImageInfo(name: name, image: image)
+    }
   }
 
 }

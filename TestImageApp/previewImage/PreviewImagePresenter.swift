@@ -16,13 +16,17 @@ final class PreviewImagePresenter {
     guard let imageInfo = imageInfo else {
       return nil
     }
-    guard let url = URL(string: imageInfo.url) else {
-      throw ImageLoadError.incorrectURL
+    if let image = imageInfo.largeImage {
+      return image
+    } else {
+      guard let url = URL(string: imageInfo.url) else {
+        throw ImageLoadError.incorrectURL
+      }
+      let data = try Data(contentsOf: url)
+      guard let image = UIImage(data: data) else {
+        throw ImageLoadError.noImage
+      }
+      return image
     }
-    let data = try Data(contentsOf: url)
-    guard let image = UIImage(data: data) else {
-      throw ImageLoadError.noImage
-    }
-    return image
   }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "PreviewImageController.(start() -&gt; ()).(closure #1).(closure #1):PreviewImageController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ImageListController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():ImageListController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presenter.imageInfos[selectedIndex.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ImageListController.(prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ()).(closure #1):ImageListController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PreviewImageController.setup(with : ImageInfo, didLoadImage : (String, UIImage) -&gt; ()) -&gt; ():PreviewImageController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
