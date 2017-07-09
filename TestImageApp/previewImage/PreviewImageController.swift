@@ -13,27 +13,37 @@ class PreviewImageController: UIViewController {
 
   @IBOutlet private var previewImageView: UIImageView!
   @IBOutlet var activityIndicator: UIActivityIndicatorView!
+  
+  @IBOutlet var selectImageLbl: UILabel!
+  var isSelectedImage = false
+  
   private var presenter = PreviewImagePresenter()
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
-    start()
+    if isSelectedImage {
+      start()
+    }
   }
 
   private func setupUI() {
-    activityIndicator.startAnimating()
+    activityIndicator.stopAnimating()
+    selectImageLbl.isHidden = false
 
+    
   }
 
   func setup(with info: ImageInfo) {
     presenter.imageInfo = info
     self.title = presenter.imageInfo?.name
     self.navigationItem.rightBarButtonItems = []
-
+    isSelectedImage = true
   }
 
   private func start() {
+
     activityIndicator.startAnimating()
+    selectImageLbl.isHidden = true
 
     DispatchQueue.global(qos: .userInteractive).async { [weak self] in
       do {
