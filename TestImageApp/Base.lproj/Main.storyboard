@@ -105,12 +105,20 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iM1-gJ-HOk">
                                 <rect key="frame" x="178" y="324" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-Th-AwQ">
+                                <rect key="frame" x="118.5" y="319" width="138.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="jCm-Rc-tuv" secondAttribute="leading" id="4ep-yi-qfx"/>
+                            <constraint firstItem="ae1-Th-AwQ" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="KtS-qi-0Se"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jCm-Rc-tuv" secondAttribute="trailing" id="RBd-14-eWj"/>
                             <constraint firstItem="jCm-Rc-tuv" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="bOv-Ui-0OQ"/>
+                            <constraint firstItem="ae1-Th-AwQ" firstAttribute="centerX" secondItem="Yeg-Hm-MsG" secondAttribute="centerX" id="oKQ-3F-WzV"/>
                             <constraint firstItem="iM1-gJ-HOk" firstAttribute="centerX" secondItem="Yeg-Hm-MsG" secondAttribute="centerX" id="plA-GC-GB8"/>
                             <constraint firstItem="iM1-gJ-HOk" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="zx8-Tf-juB"/>
                         </constraints>
@@ -123,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTL-kK-lPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="378"/>
+            <point key="canvasLocation" x="1917.5999999999999" y="377.36131934032989"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cvz-a1-nuq">

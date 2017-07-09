@@ -37,12 +37,13 @@ class PreviewImageController: UIViewController {
 
     DispatchQueue.global(qos: .userInteractive).async { [weak self] in
       do {
-        let image = try self?.presenter.loadImage()
-        DispatchQueue.main.async {
-          if let strong = self {
-            strong.activityIndicator.stopAnimating()
-            strong.previewImageView.image = image
-            strong.navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "Send", style: .plain, target: strong, action: #selector(strong.shareOnEmail))]
+        if let image = try self?.presenter.loadImage() {
+          DispatchQueue.main.async {
+            if let strong = self {
+              strong.activityIndicator.stopAnimating()
+              strong.previewImageView.image = image
+              strong.navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "Send", style: .plain, target: strong, action: #selector(strong.shareOnEmail))]
+            }
           }
         }
       } catch {
