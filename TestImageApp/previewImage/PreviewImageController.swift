@@ -49,6 +49,12 @@ class PreviewImageController: UIViewController {
         print(error)
         DispatchQueue.main.async { [weak self] in
           self?.activityIndicator.stopAnimating()
+          let alert = UIAlertController(title: "Error",
+                                        message: "Some problems on loading images.",
+                                        preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+          self?.present(alert, animated: true, completion: nil)
+          print(error)
          
         }
       }
@@ -57,7 +63,11 @@ class PreviewImageController: UIViewController {
 
   @objc func shareOnEmail() {
     guard MFMailComposeViewController.canSendMail() else {
-      print("Can't send email")
+      let alert = UIAlertController(title: "Error",
+                                    message: "Can't send email. Please, check your mail account settings",
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+      present(alert, animated: true, completion: nil)
       return
     }
     let mailComposerVC = MFMailComposeViewController()

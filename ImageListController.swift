@@ -47,8 +47,14 @@ class ImageListController: UITableViewController {
       } catch {
         DispatchQueue.main.async { [weak self] in
           self?.refreshControl?.endRefreshing()
+          let alert = UIAlertController(title: "Error",
+                                        message: "Some problems on loading images.",
+                                        preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+          self?.present(alert, animated: true, completion: nil)
+          print(error)
         }
-        print(error)
+
       }
     }
   }
@@ -79,7 +85,15 @@ class ImageListController: UITableViewController {
     do {
       return try presenter.loadImageTn(for: index)
     } catch {
-      print(error)
+      DispatchQueue.main.async { [weak self] in
+
+        let alert = UIAlertController(title: "Error",
+                                      message: "Some problems on loading images.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
+        self?.present(alert, animated: true, completion: nil)
+        print(error)
+      }
     }
     return nil
   }
