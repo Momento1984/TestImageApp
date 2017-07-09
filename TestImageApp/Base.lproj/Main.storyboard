@@ -41,7 +41,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2LW-dd-dKj">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2LW-dd-dKj">
                                             <rect key="frame" x="8" y="7" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="g6I-c6-Fys"/>
@@ -96,7 +96,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCm-Rc-tuv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCm-Rc-tuv">
                                 <rect key="frame" x="16" y="162" width="343" height="343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jCm-Rc-tuv" secondAttribute="height" multiplier="1:1" id="Jdt-PN-wHt"/>
@@ -105,20 +105,13 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iM1-gJ-HOk">
                                 <rect key="frame" x="178" y="324" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nh-hS-oJx">
-                                <rect key="frame" x="139.5" y="629" width="97" height="30"/>
-                                <state key="normal" title="Send on email"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="jCm-Rc-tuv" secondAttribute="leading" id="4ep-yi-qfx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jCm-Rc-tuv" secondAttribute="trailing" id="RBd-14-eWj"/>
                             <constraint firstItem="jCm-Rc-tuv" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="bOv-Ui-0OQ"/>
-                            <constraint firstItem="FKb-jA-WcL" firstAttribute="top" secondItem="6nh-hS-oJx" secondAttribute="bottom" constant="8" symbolic="YES" id="oaF-Mk-9xB"/>
                             <constraint firstItem="iM1-gJ-HOk" firstAttribute="centerX" secondItem="Yeg-Hm-MsG" secondAttribute="centerX" id="plA-GC-GB8"/>
-                            <constraint firstItem="6nh-hS-oJx" firstAttribute="centerX" secondItem="Yeg-Hm-MsG" secondAttribute="centerX" id="rJL-TA-WUe"/>
-                            <constraint firstItem="6nh-hS-oJx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jCm-Rc-tuv" secondAttribute="bottom" constant="8" symbolic="YES" id="zIL-rn-cgO"/>
                             <constraint firstItem="iM1-gJ-HOk" firstAttribute="centerY" secondItem="Yeg-Hm-MsG" secondAttribute="centerY" id="zx8-Tf-juB"/>
                         </constraints>
                     </view>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class PreviewImageController: UIViewController {
 
@@ -18,47 +19,65 @@ class PreviewImageController: UIViewController {
     setupUI()
     start()
   }
-  
+
   private func setupUI() {
     activityIndicator.startAnimating()
 
   }
-  
+
   func setup(with info: ImageInfo) {
     presenter.imageInfo = info
     self.title = presenter.imageInfo?.name
+    self.navigationItem.rightBarButtonItems = []
 
   }
-  
+
   private func start() {
     activityIndicator.startAnimating()
-    
+
     DispatchQueue.global(qos: .userInteractive).async { [weak self] in
       do {
         let image = try self?.presenter.loadImage()
         DispatchQueue.main.async {
-          self?.activityIndicator.stopAnimating()
-          self?.previewImageView.image = image
+          if let strong = self {
+            strong.activityIndicator.stopAnimating()
+            strong.previewImageView.image = image
+            strong.navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "Send", style: .plain, target: strong, action: #selector(strong.shareOnEmail))]
+          }
         }
       } catch {
         print(error)
         DispatchQueue.main.async { [weak self] in
           self?.activityIndicator.stopAnimating()
+         
         }
       }
     }
   }
-  
-  
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+  @objc func shareOnEmail() {
+    guard MFMailComposeViewController.canSendMail() else {
+      print("Can't send email")
+      return
     }
-    */
+    let mailComposerVC = MFMailComposeViewController()
+    mailComposerVC.mailComposeDelegate = self
+    mailComposerVC.setToRecipients([])
+    mailComposerVC.setSubject(presenter.imageInfo!.name)
+    mailComposerVC.setMessageBody("Only for you", isHTML: false)
 
+    //Add Image as Attachment
+    if let image = previewImageView.image {
+      let data = UIImageJPEGRepresentation(image, 1.0)
+      mailComposerVC.addAttachmentData(data!, mimeType: "png", fileName: "image")
+    }
+
+    present(mailComposerVC, animated: true, completion: nil)
+  }
+}
+
+extension PreviewImageController: MFMailComposeViewControllerDelegate {
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    self.dismiss(animated: true, completion: nil)
+  }
 }

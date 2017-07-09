@@ -26,7 +26,7 @@ class ImageListController: UITableViewController {
   private func setupUI() {
     tableView.rowHeight = 76
     refreshControl?.addTarget(self, action: #selector(start), for: .valueChanged)
-    //self.splitViewController?.delegate = self
+    self.splitViewController?.delegate = self
     title = "Image list"
     searchController.searchResultsUpdater = self
     tableView.tableHeaderView = searchController.searchBar
@@ -108,5 +108,11 @@ extension ImageListController: UISearchResultsUpdating {
     presenter.filterForSearch(text: searchController.searchBar.text!)
     tableView.reloadData()
   }
-  
+}
+
+extension ImageListController: UISplitViewControllerDelegate {
+  func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+    return true
+  }
+
 }
