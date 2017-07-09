@@ -29,8 +29,8 @@
 		D859DDA51F107B87008F3FF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D859DDAB1F107C28008F3FF4 /* ImageListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListController.swift; sourceTree = "<group>"; };
 		D859DDAE1F107EE7008F3FF4 /* ImageListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListPresenter.swift; sourceTree = "<group>"; };
-		D859DDB01F1083B0008F3FF4 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
-		D859DDB21F1089AD008F3FF4 /* ImageLoadError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadError.swift; sourceTree = "<group>"; };
+		D859DDB01F1083B0008F3FF4 /* ImageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageInfo.swift; path = ../ImageInfo.swift; sourceTree = "<group>"; };
+		D859DDB21F1089AD008F3FF4 /* ImageLoadError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoadError.swift; path = ../ImageLoadError.swift; sourceTree = "<group>"; };
 		D859DDB41F10A647008F3FF4 /* ImageListItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListItemCell.swift; sourceTree = "<group>"; };
 		D859DDB71F10AC11008F3FF4 /* PreviewImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewImageController.swift; sourceTree = "<group>"; };
 		D859DDB91F10B14D008F3FF4 /* PreviewImagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewImagePresenter.swift; sourceTree = "<group>"; };
@@ -47,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D803F2B81F129770009D10E7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D859DDB01F1083B0008F3FF4 /* ImageInfo.swift */,
+				D859DDB21F1089AD008F3FF4 /* ImageLoadError.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		D859DD8D1F107B87008F3FF4 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +75,7 @@
 		D859DD981F107B87008F3FF4 /* TestImageApp */ = {
 			isa = PBXGroup;
 			children = (
+				D803F2B81F129770009D10E7 /* model */,
 				D859DDAD1F107E80008F3FF4 /* imageList */,
 				D859DDB61F10ABAB008F3FF4 /* previewImage */,
 				D859DD9D1F107B87008F3FF4 /* Main.storyboard */,
@@ -73,8 +83,6 @@
 				D859DDA21F107B87008F3FF4 /* LaunchScreen.storyboard */,
 				D859DD991F107B87008F3FF4 /* AppDelegate.swift */,
 				D859DDA51F107B87008F3FF4 /* Info.plist */,
-				D859DDB01F1083B0008F3FF4 /* ImageInfo.swift */,
-				D859DDB21F1089AD008F3FF4 /* ImageLoadError.swift */,
 			);
 			path = TestImageApp;
 			sourceTree = "<group>";
